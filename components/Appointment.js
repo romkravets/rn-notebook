@@ -33,7 +33,7 @@ const GroupDate = styled.Text`
   height: 32px;
   width: 70px;
   text-align: center;
-  line-height: 28px;
+  line-height: 34px;
 `;
 
 const GrayText = styled.Text`

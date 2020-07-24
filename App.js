@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, SectionList } from 're
 import  {SectionTitle } from './components';
 import Appointment from './components/Appointment';
 import styled from 'styled-components/native';
+import { Ionicons } from '@expo/vector-icons';
+
 
 const DATA = [
     {
@@ -125,9 +127,34 @@ export default function App() {
                 <SectionTitle>{title}</SectionTitle>
             )}
         />
+        <PlusButton style={{
+            shadowColor: "#2A86FF",
+            shadowOffset: {
+                width: 0,
+                height: 2,
+            },
+            shadowOpacity: 0.5,
+            shadowRadius: 2.5,
+
+            elevation: 5,
+        }}>
+            <Ionicons name="ios-add" size={36} color="white" />
+        </PlusButton>
     </Container>
   );
 }
+
+const  PlusButton = styled.TouchableOpacity`
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    width: 64px;
+    height: 64px;
+    background: #2A86FF;
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+`;
 
 const Container = styled.View`
   flex: 1;
