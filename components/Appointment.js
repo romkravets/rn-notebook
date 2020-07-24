@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 
 import GrayText from './GrayText';
+import Badge from './Badge';
 
 const Appointment = ({navigate, item}) =>  {
     const { user, diagnosis, active, time } = item;
@@ -16,7 +17,7 @@ const Appointment = ({navigate, item}) =>  {
             <FullName>{user.fullName}</FullName>
             <GrayText>{diagnosis}</GrayText>
             </View>
-            <GroupDate active={active}>{time}</GroupDate>
+            <Badge active={active}>{time}</Badge>
         </GroupItem>
     );
 }
@@ -27,18 +28,6 @@ Appointment.defaultProps = {
 };
 
 export default Appointment;
-
-const GroupDate = styled.Text`
-  background: ${props => (props.active ? '#2A86FF' : '#E9F5FF')};
-  color: ${props => (props.active ? '#FFFFFF' : '#4294FF')};
-  border-radius: 18px;
-  font-weight: 800;
-  font-size: 16px;
-  height: 32px;
-  width: 70px;
-  text-align: center;
-  line-height: 34px;
-`;
 
 const FullName = styled.Text`
   font-size: 16px;

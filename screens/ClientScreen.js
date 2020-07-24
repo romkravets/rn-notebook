@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, SectionList } from 're
 import styled from 'styled-components/native';
 import GrayText from '../components/GrayText';
 import Button from "../components/Button";
+import Badge from "../components/Badge";
 import { Foundation, Ionicons  } from '@expo/vector-icons';
 
 const ClientScreen = ({route, navigation}) => {
@@ -39,6 +40,10 @@ const ClientScreen = ({route, navigation}) => {
                     <AppointmentCardRow>
                         <Ionicons name="md-clipboard" size={20} color="#A3A3A3" />
                         <AppointmentCardLabelText>Примітка: <Text style={{fontWeight: '600'}}>Новий</Text></AppointmentCardLabelText>
+                    </AppointmentCardRow>
+                    <AppointmentCardRow style={{justifyContent: 'space-between', marginTop: 15}}>
+                        <Badge style={{width: 155}} active>11.10.2019 - 15:40</Badge>
+                        <Badge color="green">1500 Р</Badge>
                     </AppointmentCardRow>
                 </AppointmentCard>
             </Container>
