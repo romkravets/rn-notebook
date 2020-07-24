@@ -2,14 +2,18 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 
-const Appointment = ({user, diagnosis, active, time}) =>  {
+import GrayText from './GrayText';
+
+const Appointment = ({navigate, item}) =>  {
+    const { user, diagnosis, active, time } = item;
+
     return (
-        <GroupItem>
+        <GroupItem onPress={() => {navigate('CartClient', item)}}>
             <Avatar source={{
             uri: user.avatar,
         }}/>
             <View style={{flex: 1}}>
-            <FullName>{user.fullname}</FullName>
+            <FullName>{user.fullName}</FullName>
             <GrayText>{diagnosis}</GrayText>
             </View>
             <GroupDate active={active}>{time}</GroupDate>
@@ -36,11 +40,6 @@ const GroupDate = styled.Text`
   line-height: 34px;
 `;
 
-const GrayText = styled.Text`
-font-size: 16px;
-color: #8B979F;
-`;
-
 const FullName = styled.Text`
   font-size: 16px;
   font-weight: 600;
@@ -53,8 +52,6 @@ const Avatar = styled.Image`
   height: 40px;
   margin-right: 15px;
 `;
-
-
 
 
 const GroupItem = styled.TouchableOpacity`
