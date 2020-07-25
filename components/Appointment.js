@@ -6,7 +6,7 @@ import GrayText from './GrayText';
 import Badge from './Badge';
 
 const Appointment = ({navigate, item}) =>  {
-    const { user, diagnosis, active, time } = item;
+    const { user, service, active, time } = item;
 
     return (
         <GroupItem onPress={() => {navigate('CartClient', item)}}>
@@ -15,7 +15,7 @@ const Appointment = ({navigate, item}) =>  {
         }}/>
             <View style={{flex: 1}}>
             <FullName>{user.fullName}</FullName>
-            <GrayText>{diagnosis}</GrayText>
+            <GrayText>{service}</GrayText>
             </View>
             <Badge active={active}>{time}</Badge>
         </GroupItem>

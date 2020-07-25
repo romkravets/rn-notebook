@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, SectionList } from 'react-native';
 import  {SectionTitle } from '../components';
 import Appointment from '../components/Appointment';
 import styled from 'styled-components/native';
 import { Ionicons } from '@expo/vector-icons';
+import axios from 'axios';
 
-const DATA = [
+/*const DATA = [
     {
         title: "24 липня",
         data: [
@@ -125,15 +126,34 @@ const DATA = [
             },
         ]
     },
-];
+];*/
 
 
 const HomeScreen = (props) => {
- /*   const { navigation } = props;*/
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        axios.get('https://trycode.pw/c/J1GHS.json').then(({data}) => {
+            const DATA = data.appointments.map(item => {
+                const key = new Date(item.date).getDate();
+                const result = {
+                    title: `${key} липня`,
+                    data: data.appointments.map(item => ({
+                        ...item,
+                        user: data.users.filter(user => user._id === item.user_id)[0]
+                    }))
+                };
+                return result;
+            }, {});
+           /* console.log(DATA, 'DATA');*/
+            setData(DATA);
+        });
+    }, []);
+
     return (
         <Container>
             <SectionList
-                sections={DATA}
+                sections={data}
                 keyExtractor={(item, index) => item + index}
                 renderItem={({ item }) =>  <Appointment navigate={props.navigation.navigate} item={item} />}
                 renderSectionHeader={({ section: { title } }) => (

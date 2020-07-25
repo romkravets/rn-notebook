@@ -33,6 +33,9 @@ const ClientScreen = ({route, navigation}) => {
         <ClientAppointments>
             <Container>
                 <AppointmentCard>
+                    <MoreButton>
+                        <Ionicons name="md-more" size={20} color="#A3A3A3" />
+                    </MoreButton>
                     <AppointmentCardRow>
                         <Ionicons name="ios-hand" size={20} color="#A3A3A3" />
                         <AppointmentCardLabelText>Послуга: <Text style={{fontWeight: '600'}}>Нарощення</Text></AppointmentCardLabelText>
@@ -51,6 +54,17 @@ const ClientScreen = ({route, navigation}) => {
         </View>
     );
 }
+
+const MoreButton = styled.TouchableOpacity`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 25px;
+    top: 10px;
+    height: 32px;
+    width: 32px;
+`;
 
 const AppointmentCardLabelText = styled.Text`
     font-size: 16px;
