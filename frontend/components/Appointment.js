@@ -2,17 +2,22 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 
-const Appointment = ({user, diagnosis, active, time}) =>  {
+import GrayText from './GrayText';
+import Badge from './Badge';
+
+const Appointment = ({navigate, item}) =>  {
+    const { user, service, active, time } = item;
+
     return (
-        <GroupItem>
+        <GroupItem onPress={() => {navigate('CartClient', item)}}>
             <Avatar source={{
             uri: user.avatar,
         }}/>
             <View style={{flex: 1}}>
-            <FullName>{user.fullname}</FullName>
-            <GrayText>{diagnosis}</GrayText>
+            <FullName>{user.fullName}</FullName>
+            <GrayText>{service}</GrayText>
             </View>
-            <GroupDate active={active}>{time}</GroupDate>
+            <Badge active={active}>{time}</Badge>
         </GroupItem>
     );
 }
@@ -23,23 +28,6 @@ Appointment.defaultProps = {
 };
 
 export default Appointment;
-
-const GroupDate = styled.Text`
-  background: ${props => (props.active ? '#2A86FF' : '#E9F5FF')};
-  color: ${props => (props.active ? '#FFFFFF' : '#4294FF')};
-  border-radius: 18px;
-  font-weight: 800;
-  font-size: 16px;
-  height: 32px;
-  width: 70px;
-  text-align: center;
-  line-height: 34px;
-`;
-
-const GrayText = styled.Text`
-font-size: 16px;
-color: #8B979F;
-`;
 
 const FullName = styled.Text`
   font-size: 16px;
@@ -53,8 +41,6 @@ const Avatar = styled.Image`
   height: 40px;
   margin-right: 15px;
 `;
-
-
 
 
 const GroupItem = styled.TouchableOpacity`
