@@ -1,11 +1,15 @@
 const express = require('express');
-const app = express()
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
-app.get('/test', function (req, res) {
-    console.log(req.params);
+const { ClientCtrl } = require('./controllers');
 
-    return res.send("Hello");
-});
+const app = express();
+app.use(bodyParser.json());
+app.use(cors());
+
+app.get('/clients', ClientCtrl.all);
+app.post('/clients', ClientCtrl.create);
 
 app.listen(5050, function (err) {
     if(err) {

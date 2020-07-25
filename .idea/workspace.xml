@@ -20,30 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cda9294c-4366-43c9-823d-f1d1f3e7914a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.expo-shared/assets.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/favicon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/splash.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/babel.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Appointment.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Badge.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Button.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/GrayText.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/SectionTitle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/ClientScreen.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/HomeScreen.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/index.js" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/controllers/AppointmenController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/controllers/ClientController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/controllers/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/core/db.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/models/Appointment.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/models/Client.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/models/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,11 +52,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/controllers" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user_1\Documents\GitHub\rn-notebook\backend\controllers" />
       <recent name="C:\Users\user_1\Documents\GitHub\rn-notebook\backend" />
     </key>
   </component>
@@ -83,7 +71,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1595698391884</updated>
-      <workItem from="1595698406316" duration="1864000" />
+      <workItem from="1595698406316" duration="7774000" />
     </task>
     <servers />
   </component>
