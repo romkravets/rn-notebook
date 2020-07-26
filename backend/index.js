@@ -17,6 +17,7 @@ app.post('/clients', clientValidation.create, ClientCtrl.create);
 
 app.get('/appointments', AppointmentCtrl.all);
 app.post('/appointments', appointmentValidation.create, AppointmentCtrl.create);
+app.delete('/appointments/:id', AppointmentCtrl.remove);
 
 app.listen(5050, function (err) {
     if(err) {

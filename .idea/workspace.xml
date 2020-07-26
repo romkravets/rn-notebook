@@ -22,8 +22,7 @@
     <list default="true" id="cda9294c-4366-43c9-823d-f1d1f3e7914a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllers/AppointmenController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/AppointmenController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Appointment.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Appointment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/utils/validations/appointment.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/utils/validations/appointment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +67,7 @@
       <workItem from="1595698406316" duration="8077000" />
       <workItem from="1595748415009" duration="1312000" />
       <workItem from="1595749909222" duration="8359000" />
+      <workItem from="1595765439859" duration="416000" />
     </task>
     <servers />
   </component>
@@ -87,9 +87,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="448" y="165" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1595698960652">
+    <state x="448" y="165" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1595765161143">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="448" y="165" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1595698960652" />
+    <state x="448" y="165" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728/-1280.0.1280.984@0.0.1366.728" timestamp="1595765161143" />
   </component>
 </project>
