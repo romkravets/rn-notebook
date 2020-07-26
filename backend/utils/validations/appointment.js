@@ -7,7 +7,7 @@ const validation = {
         check('description').isLength({ min: 3, max: 50 }),
         check('date').isLength({ min: 3, max: 50 }),
         check('time').isLength({ min: 3, max: 50 }),
-        check('clientId').isLength({ min: 3, max: 50 })
+        check('client').isLength({ min: 3, max: 50 })
     ],
 };
 

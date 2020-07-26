@@ -1,12 +1,12 @@
 const { validationResult } = require('express-validator');
-const { Appointment } = require('../models');
+const { Appointment, Client } = require('../models');
 
 function AppointmentController() {}
 
-const create = function(req, res) {
+const create = async  function(req, res) {
     const errors = validationResult(req);
     const data = {
-        clientId: req.body.clientId,
+        client: req.body.client,
         service:  req.body.service,
         description: req.body.description,
         price: req.body.price,
@@ -19,6 +19,15 @@ const create = function(req, res) {
         return res.status(422).json({
             success: false,
             message: errors.array()
+        });
+    }
+
+    const client = await Client.findOne({_id: data.client});
+
+    if (!client) {
+        return res.status(404).json({
+            success: false,
+            message: 'PATIENT_NOT_FOUND',
         });
     }
 
@@ -38,7 +47,7 @@ const create = function(req, res) {
 };
 
 const all = function (req, res) {
-    Appointment.find({}, function(err, docs) {
+    Appointment.find({}).populate('client').exec (function(err, docs) {
         if(err) {
             return res.status(500).json({
                 status: false,
