@@ -1,16 +1,22 @@
 const express = require('express');
 const cors = require('cors');
+/*
 const bodyParser = require('body-parser');
+*/
 
 const db = require('./core/db');
-const { ClientCtrl } = require('./controllers');
+const {clientValidation, appointmentValidation} = require('./utils/validations');
+const { ClientCtrl, AppointmentCtrl } = require('./controllers');
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(cors());
 
 app.get('/clients', ClientCtrl.all);
-app.post('/clients', ClientCtrl.create);
+app.post('/clients', clientValidation.create, ClientCtrl.create);
+
+app.get('/appointments', AppointmentCtrl.all);
+app.post('/appointments', appointmentValidation.create, AppointmentCtrl.create);
 
 app.listen(5050, function (err) {
     if(err) {

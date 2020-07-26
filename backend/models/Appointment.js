@@ -6,9 +6,9 @@ const AppointmentSchema = new Schema({
     service: String,
     description: String,
     price: Number,
-    data: String,
+    date: String,
     time: String,
-    userId: {type: Schema.Types.ObjectId, ref: "Client"},
+    clientId: {type: Schema.Types.ObjectId, ref: "Client"},
     },
     {
     timestamps: true
@@ -17,4 +17,4 @@ const AppointmentSchema = new Schema({
 
 const Appointment = mongoose.model('Appointment', AppointmentSchema);
 
-module.export = Appointment;
+module.exports = Appointment;

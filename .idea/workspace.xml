@@ -20,12 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cda9294c-4366-43c9-823d-f1d1f3e7914a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/utils/validations/appointment.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/utils/validations/client.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/utils/validations/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/AppointmenController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/AppointmenController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllers/ClientController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/ClientController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/core/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/core/db.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Client.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Client.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Appointment.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Appointment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,11 +51,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend/utils/validations" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user_1\Documents\GitHub\rn-notebook\backend\utils\validations" />
       <recent name="C:\Users\user_1\Documents\GitHub\rn-notebook\backend\controllers" />
       <recent name="C:\Users\user_1\Documents\GitHub\rn-notebook\backend" />
     </key>
@@ -68,7 +73,7 @@
       <updated>1595698391884</updated>
       <workItem from="1595698406316" duration="8077000" />
       <workItem from="1595748415009" duration="1312000" />
-      <workItem from="1595749909222" duration="2856000" />
+      <workItem from="1595749909222" duration="6608000" />
     </task>
     <servers />
   </component>

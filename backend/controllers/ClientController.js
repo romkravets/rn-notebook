@@ -1,12 +1,21 @@
+const { validationResult } = require('express-validator');
 const { Client } = require('../models');
 
 function ClientController() {}
 
 const create = function(req, res) {
+    const errors = validationResult(req);
     const data = {
         fullname: req.body.fullname,
         phone: req.body.phone
     };
+
+    if (!errors.isEmpty()) {
+        return res.status(422).json({
+            success: false,
+            message: errors.array()
+        });
+    }
 
     Client.create(data, function(err, doc) {
         if (err) {
@@ -32,7 +41,7 @@ const all = function (req, res) {
         });
     }
 
-    res.join({
+    res.json({
         status: true,
         data: docs
     });
