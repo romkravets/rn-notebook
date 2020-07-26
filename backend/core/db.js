@@ -1,5 +1,12 @@
-const mongoose = requere('mongoose');
+const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/work', {useNewUrlParser: true});
+mongoose
+    .connect('mongodb://localhost:27017/work', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+    })
+    .catch(function (err) {
+    throw Error(err);
+});
 
-module.export = mongoose;
+module.exports = mongoose;

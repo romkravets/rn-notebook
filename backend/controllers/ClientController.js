@@ -4,25 +4,24 @@ function ClientController() {}
 
 const create = function(req, res) {
     const data = {
-        fullName: req.body.fullName,
-        phone:  req.body.phone,
+        fullname: req.body.fullname,
+        phone: req.body.phone
     };
-    console.log(data);
-    Client.create(data, function (err, doc) {
-        if(err) {
+
+    Client.create(data, function(err, doc) {
+        if (err) {
             return res.status(500).json({
-                status: false,
-                massage: err
+                success: false,
+                message: err
             });
         }
 
-        res.status(201).join({
-            status: true,
+        res.status(201).json({
+            success: true,
             data: doc
         });
     });
-}
-
+};
 
 const all = function (req, res) {
     Client.find({}, function(err, docs) {
@@ -40,7 +39,6 @@ const all = function (req, res) {
 });
 
 }
-
 ClientController.prototype = {
     all,
     create

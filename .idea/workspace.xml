@@ -20,17 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cda9294c-4366-43c9-823d-f1d1f3e7914a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/controllers/AppointmenController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/controllers/ClientController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/controllers/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/core/db.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/models/Appointment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/models/Client.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/models/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/ClientController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/ClientController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/core/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/core/db.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Client.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +66,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1595698391884</updated>
-      <workItem from="1595698406316" duration="7774000" />
+      <workItem from="1595698406316" duration="8077000" />
+      <workItem from="1595748415009" duration="1312000" />
+      <workItem from="1595749909222" duration="2856000" />
     </task>
     <servers />
   </component>
@@ -88,6 +85,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="448" y="165" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1595698960652">

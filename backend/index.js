@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
+const db = require('./core/db');
 const { ClientCtrl } = require('./controllers');
 
 const app = express();
