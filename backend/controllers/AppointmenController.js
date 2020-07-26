@@ -12,7 +12,6 @@ const create = async  function(req, res) {
         price: req.body.price,
         date: req.body.data,
         time: req.body.time,
-
     };
 
     if (!errors.isEmpty()) {
@@ -42,6 +41,46 @@ const create = async  function(req, res) {
         res.status(201).json({
             success: true,
             data: doc
+        });
+    });
+};
+
+const update = async function(req, res) {
+    const appointmentId = req.params.id;
+    const errors = validationResult(req);
+
+    const data = {
+        service:  req.body.service,
+        description: req.body.description,
+        price: req.body.price,
+        date: req.body.data,
+        time: req.body.time,
+    };
+
+    if (!errors.isEmpty()) {
+        return res.status(422).json({
+            success: false,
+            message: errors.array(),
+        });
+    }
+
+    Appointment.updateOne({ _id: appointmentId }, { $set: data }, function(err, doc) {
+        if (err) {
+            return res.status(500).json({
+                success: false,
+                message: err,
+            });
+        }
+
+        if (!doc) {
+            return res.status(404).json({
+                success: false,
+                message: 'APPOINTMENT_NOT_FOUND',
+            });
+        }
+
+        res.json({
+            success: true,
         });
     });
 };
@@ -92,6 +131,7 @@ AppointmentController.prototype = {
     all,
     create,
     remove,
+    update
 };
 
 module.exports = AppointmentController;
