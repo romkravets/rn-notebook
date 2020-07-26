@@ -45,6 +45,32 @@ const create = async  function(req, res) {
     });
 };
 
+const remove = async function(req, res) {
+    const id = req.params.id;
+
+    try {
+        await Appointment.findOne({_id: id});
+    } catch (e) {
+        return res.status(404).json({
+            success: false,
+            message: 'APPOINTMENT_NOT_FOUND',
+        });
+    }
+
+    Appointment.deleteOne({ _id: id }, err => {
+        if (err) {
+            return res.status(500).json({
+                success: false,
+                message: err,
+            });
+        }
+
+        res.json({
+            status: 'succces',
+        });
+    });
+};
+
 const update = async function(req, res) {
     const appointmentId = req.params.id;
     const errors = validationResult(req);
@@ -85,32 +111,6 @@ const update = async function(req, res) {
     });
 };
 
-const remove = async function(req, res) {
-    const id = req.params.id;
-
-    try {
-        await Appointment.findOne({_id: id});
-    } catch (e) {
-        return res.status(404).json({
-            success: false,
-            message: 'APPOINTMENT_NOT_FOUND',
-        });
-    }
-
-    Appointment.deleteOne({ _id: id }, err => {
-        if (err) {
-            return res.status(500).json({
-                success: false,
-                message: err,
-            });
-        }
-
-        res.json({
-            status: 'succces',
-        });
-    });
-};
-
 const all = function (req, res) {
     Appointment.find({}).populate('client').exec (function(err, docs) {
         if(err) {
@@ -127,6 +127,7 @@ const all = function (req, res) {
     });
 
 }
+
 AppointmentController.prototype = {
     all,
     create,
