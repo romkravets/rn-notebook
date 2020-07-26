@@ -10,7 +10,7 @@ const create = async  function(req, res) {
         service:  req.body.service,
         description: req.body.description,
         price: req.body.price,
-        date: req.body.data,
+        date: req.body.date,
         time: req.body.time,
     };
 
@@ -53,7 +53,7 @@ const update = async function(req, res) {
         service:  req.body.service,
         description: req.body.description,
         price: req.body.price,
-        date: req.body.data,
+        date: req.body.date,
         time: req.body.time,
     };
 
