@@ -100,11 +100,13 @@ const remove = async function(req, res) {
 const show = async function(req, res) {
     const id = req.params.id;
     try {
-        const client = await Client.findById(id).exec();
+        const client = await Client.findById(id)
+            .populate('appointments')
+            .exec();
 
         res.json({
             status: 'succces',
-            data: client
+            data: { ...client._doc, appointments: client.appointments }
         });
     } catch (e) {
         return res.status(404).json({
