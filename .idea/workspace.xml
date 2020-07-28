@@ -22,6 +22,10 @@
     <list default="true" id="cda9294c-4366-43c9-823d-f1d1f3e7914a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/controllers/AppointmenController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/AppointmenController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/ClientController.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/ClientController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/models/Client.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/utils/validations/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/utils/validations/client.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +47,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../react-brand" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -67,6 +71,7 @@
       <workItem from="1595748415009" duration="1312000" />
       <workItem from="1595749909222" duration="8359000" />
       <workItem from="1595765439859" duration="3650000" />
+      <workItem from="1595918637001" duration="2701000" />
     </task>
     <servers />
   </component>

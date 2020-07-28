@@ -14,6 +14,9 @@ app.use(cors());
 
 app.get('/clients', ClientCtrl.all);
 app.post('/clients', clientValidation.create, ClientCtrl.create);
+app.delete('/clients/:id', ClientCtrl.remove);
+app.patch('/clients/:id', clientValidation.create, ClientCtrl.update);
+app.get('/clients/:id', ClientCtrl.show);
 
 app.get('/appointments', AppointmentCtrl.all);
 app.post('/appointments', appointmentValidation.create, AppointmentCtrl.create);

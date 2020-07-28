@@ -6,7 +6,8 @@ const ClientSchema = new Schema(
     {
         id: String,
         fullname: String,
-        phone: String
+        phone: String,
+        birthday: String,
     },
     {
         timestamps: true
