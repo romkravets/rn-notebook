@@ -6,7 +6,7 @@ import styled from 'styled-components/native';
 import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 
-/*const DATA = [
+const DATA = [
     {
         title: "24 липня",
         data: [
@@ -126,14 +126,14 @@ import axios from 'axios';
             },
         ]
     },
-];*/
+];
 
 
 const HomeScreen = (props) => {
     const [data, setData] = useState(null);
 
-    useEffect(() => {
-        axios.get('https://trycode.pw/c/J1GHS.json').then(({data}) => {
+/*    useEffect(() => {
+        axios.get(DATA).then(({data}) => {
             const DATA = data.appointments.map(item => {
                 const key = new Date(item.date).getDate();
                 const result = {
@@ -145,15 +145,15 @@ const HomeScreen = (props) => {
                 };
                 return result;
             }, {});
-           /* console.log(DATA, 'DATA');*/
+           /!* console.log(DATA, 'DATA');*!/
             setData(DATA);
         });
-    }, []);
+    }, []);*/
 
     return (
         <Container>
             <SectionList
-                sections={data}
+                sections={DATA}
                 keyExtractor={(item, index) => item + index}
                 renderItem={({ item }) =>  <Appointment navigate={props.navigation.navigate} item={item} />}
                 renderSectionHeader={({ section: { title } }) => (
