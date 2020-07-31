@@ -14,8 +14,8 @@ const ClientScreen = ({route, navigation}) => {
         <View style={{flex: 1}}>
 
         <ClientDetails>
-            <ClientFullName>{console.log(item.user) || item.user.fullName}</ClientFullName>
-            <GrayText>{item.user.phone}</GrayText>
+            <ClientFullName>{console.log(item.client) || item.client.fullname}</ClientFullName>
+            <GrayText>{item.client.phone}</GrayText>
 
             <BlockButtons>
                 <MoreButtonView>
