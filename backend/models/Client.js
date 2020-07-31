@@ -14,6 +14,13 @@ const ClientSchema = new Schema(
     }
 );
 
+ClientSchema.virtual('appointments', {
+    ref: 'Appointment',
+    localField: '_id',
+    foreignField: 'client',
+    justOne: false // set true for one-to-one relationship
+});
+
 const Client = mongoose.model('Client', ClientSchema);
 
 module.exports = Client;
