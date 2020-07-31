@@ -5,16 +5,19 @@ import styled from 'styled-components/native';
 import GrayText from './GrayText';
 import Badge from './Badge';
 
+import getAvatarColor from '../utils/getAvatarColor';
+
 const Appointment = ({navigate, item}) =>  {
     const { client, service, active, time } = item;
+    const avatarColors = getAvatarColor(client.fullname[0].toUpperCase());
 
     return (
         <GroupItem onPress={() => {navigate('CartClient', item)}}>
-            <Avatar style={{backgroundColor: 'green',}}>
-                <Letter>{client.fullname[0].toUpperCase()}</Letter>
+            <Avatar style={{backgroundColor: avatarColors.background,}}>
+                <Letter style={{color: avatarColors.color}}>{client.fullname[0].toUpperCase()}</Letter>
             </Avatar>
             <View style={{flex: 1}}>
-            <FullName>{client.fullName}</FullName>
+            <FullName>{client.fullname}</FullName>
             <GrayText>{service}</GrayText>
             </View>
             <Badge active={active}>{time}</Badge>
@@ -35,7 +38,6 @@ const FullName = styled.Text`
 `;
 
 const Letter = styled.Text`
-    color: white;
     font-size: 20px;
     font-weight: bold;
 `;

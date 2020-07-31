@@ -2,6 +2,10 @@ const { validationResult } = require('express-validator');
 const { Appointment, Client } = require('../models');
 const { groupBy, reduce } = require('lodash');
 
+const dayjs = require('dayjs');
+
+const uaLocale = require('dayjs/locale/uk');
+
 function AppointmentController() {}
 
 const create = async  function(req, res) {
@@ -126,7 +130,10 @@ const all = function (req, res) {
             data: reduce(
                 groupBy(docs, 'date'),
                 (result, value, key) => {
-                    result = [ ...result, { title: key, data: value}];
+                    result = [ ...result, {   title: dayjs(key)
+                            .locale(uaLocale)
+                            .format('D MMMM'),
+                        data: value,}];
                     return result;
                 },
                 [],

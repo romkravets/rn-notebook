@@ -132,20 +132,29 @@ const DATA = [
 
 const HomeScreen = (props) => {
     const [data, setData] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
+    const fetchAppointments = () => {
+        setIsLoading(true);
         appointmentsApi
             .get()
             .then(({ data }) => {
                 setData(data.data);
             })
-    }, []);
+            .finally(e => {
+                setIsLoading(false);
+            });
+    };
+
+    useEffect(fetchAppointments, []);
 
     return (
         <Container>
             <SectionList
                 sections={data}
                 keyExtractor={(item, index) => item + index}
+                onRefresh={fetchAppointments}
+                refreshing={isLoading}
                 renderItem={({ item }) => (
                     <Swipeable rightButtons={
                         [ <Text>Left</Text>,
