@@ -1,2 +1,2 @@
-export { default as patientsApi } from './patients';
+export { default as clientsApi } from './clients';
 export { default as appointmentsApi } from './appointments';

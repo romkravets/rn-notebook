@@ -170,7 +170,7 @@ const HomeScreen = (props) => {
             <PlusButton
                 onPress={props.navigation.navigate.bind(this, 'AddClient')}
                 style={{
-                shadowColor: "#2A86FF",
+                shadowColor: "#2a86ff",
                 shadowOffset: {
                     width: 0,
                     height: 2,

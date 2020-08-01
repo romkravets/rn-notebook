@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import GrayText from '../components/GrayText';
 import Button from "../components/Button";
 import Badge from "../components/Badge";
+import Container from "../components/Container";
 import { Foundation, Ionicons  } from '@expo/vector-icons';
 
 const ClientScreen = ({route, navigation}) => {
@@ -19,7 +20,7 @@ const ClientScreen = ({route, navigation}) => {
 
             <BlockButtons>
                 <MoreButtonView>
-                    <Button>Details</Button>
+                    <Button>Детально</Button>
                 </MoreButtonView>
                 <PhoneButtonView>
                     <Button background="#84D269">
@@ -87,10 +88,6 @@ const AppointmentCard = styled.View`
     padding: 20px 25px;
     border-radius: 10px;
     background: white;
-`;
-
-const Container = styled.View`
-    padding: 25px;
 `;
 
 const ClientDetails = styled(Container)`
