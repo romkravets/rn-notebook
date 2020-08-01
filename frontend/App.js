@@ -4,6 +4,7 @@ import ClientScreen from './screens/ClientScreen';
 import HomeScreen from './screens/HomeScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import AddClientScreen from "./screens/AddClientScreen";
 
 const Stack = createStackNavigator();
 
@@ -12,7 +13,7 @@ export default function App() {
       <NavigationContainer>
           <Stack.Navigator initialRouteName="Home">
               <Stack.Screen name="Home" component={HomeScreen}  options={{
-                  title: 'Clients',
+                  title: 'Клієнти',
                   headerTintColor: '#2A86FF',
                   headerStyle: {
                       elevation: 0.5,
@@ -20,9 +21,13 @@ export default function App() {
                   }
               }} />
               <Stack.Screen name="CartClient" component={ClientScreen} options={{
-                  title: 'Client Cart',
+                  title: 'Карта Клієнта',
                   headerTintColor: '#2A86FF',
                   }}/>
+              <Stack.Screen name="AddClient" component={AddClientScreen} options={{
+                  title: 'Додати Клієнта',
+                  headerTintColor: '#2A86FF',
+              }}/>
           </Stack.Navigator>
       </NavigationContainer>
   );

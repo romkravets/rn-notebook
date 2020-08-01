@@ -1,5 +1,10 @@
 const { validationResult } = require('express-validator');
 const { Appointment, Client } = require('../models');
+const { groupBy, reduce } = require('lodash');
+
+const dayjs = require('dayjs');
+
+const uaLocale = require('dayjs/locale/uk');
 
 function AppointmentController() {}
 
@@ -122,27 +127,21 @@ const all = function (req, res) {
 
         res.json({
             status: true,
-            data: docs
+            data: reduce(
+                groupBy(docs, 'date'),
+                (result, value, key) => {
+                    result = [ ...result, {   title: dayjs(key)
+                            .locale(uaLocale)
+                            .format('D MMMM'),
+                        data: value,}];
+                    return result;
+                },
+                [],
+            ),
         });
     });
 
 }
-
-/*const all = function (req, res) {
-    Appointment.find({}).populate('client').exec (function(err, docs) {
-        if(err) {
-            return res.status(500).json({
-                status: false,
-                massage: err
-            });
-        }
-
-        res.json({
-            status: true,
-            data: docs
-        });
-    });
-}*/
 
 AppointmentController.prototype = {
     all,

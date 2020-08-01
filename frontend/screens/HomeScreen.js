@@ -4,7 +4,8 @@ import  {SectionTitle } from '../components';
 import Appointment from '../components/Appointment';
 import styled from 'styled-components/native';
 import { Ionicons } from '@expo/vector-icons';
-import axios from 'axios';
+import Swipeable from 'react-native-swipeable-row';
+import { appointmentsApi } from '../utils/api';
 
 const DATA = [
     {
@@ -131,37 +132,45 @@ const DATA = [
 
 const HomeScreen = (props) => {
     const [data, setData] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
-/*    useEffect(() => {
-        axios.get(DATA).then(({data}) => {
-            const DATA = data.appointments.map(item => {
-                const key = new Date(item.date).getDate();
-                const result = {
-                    title: `${key} липня`,
-                    data: data.appointments.map(item => ({
-                        ...item,
-                        user: data.users.filter(user => user._id === item.user_id)[0]
-                    }))
-                };
-                return result;
-            }, {});
-           /!* console.log(DATA, 'DATA');*!/
-            setData(DATA);
-        });
-    }, []);*/
+    const fetchAppointments = () => {
+        setIsLoading(true);
+        appointmentsApi
+            .get()
+            .then(({ data }) => {
+                setData(data.data);
+            })
+            .finally(e => {
+                setIsLoading(false);
+            });
+    };
+
+    useEffect(fetchAppointments, []);
 
     return (
         <Container>
             <SectionList
-                sections={DATA}
+                sections={data}
                 keyExtractor={(item, index) => item + index}
-                renderItem={({ item }) =>  <Appointment navigate={props.navigation.navigate} item={item} />}
+                onRefresh={fetchAppointments}
+                refreshing={isLoading}
+                renderItem={({ item }) => (
+                    <Swipeable rightButtons={
+                        [ <Text>Left</Text>,
+                            <Text>Right</Text>]
+                    }>
+                        <Appointment navigate={props.navigation.navigate} item={item} />
+                    </Swipeable>
+                )}
                 renderSectionHeader={({ section: { title } }) => (
                     <SectionTitle>{title}</SectionTitle>
                 )}
             />
-            <PlusButton style={{
-                shadowColor: "#2A86FF",
+            <PlusButton
+                onPress={props.navigation.navigate.bind(this, 'AddClient')}
+                style={{
+                shadowColor: "#2a86ff",
                 shadowOffset: {
                     width: 0,
                     height: 2,
