@@ -4,6 +4,7 @@ import ClientScreen from './screens/ClientScreen';
 import HomeScreen from './screens/HomeScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import AddClientScreen from "./screens/AddClientScreen";
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,10 @@ export default function App() {
                   title: 'Client Cart',
                   headerTintColor: '#2A86FF',
                   }}/>
+              <Stack.Screen name="AddClient" component={AddClientScreen} options={{
+                  title: 'Add Client',
+                  headerTintColor: '#2A86FF',
+              }}/>
           </Stack.Navigator>
       </NavigationContainer>
   );
