@@ -84,17 +84,7 @@ const HomeScreen = (props) => {
                     <SectionTitle>{title}</SectionTitle>
                 )}
             />
-             <PlusButton onPress={props.navigation.navigate.bind(this, 'AddClient')}  style={{
-                shadowColor: "#2a86ff",
-                shadowOffset: {
-                    width: 0,
-                    height: 2,
-                },
-                shadowOpacity: 0.5,
-                shadowRadius: 2.5,
-
-                elevation: 5,
-            }}/>
+             <PlusButton onPress={props.navigation.navigate.bind(this, 'AddClient')} />
         </Container>
     );
 }

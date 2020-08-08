@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, SectionList } from 'react-native';
 import styled from 'styled-components';
 import { Item, Input, Label, Picker } from 'native-base';
-import DatePicker from 'react-native-datepicker';
+// import DatePicker from 'react-native-datepicker';
+import DatePicker  from '@react-native-community/datetimepicker';
 import { Ionicons } from '@expo/vector-icons';
 
 import  Button  from '../components/Button';
