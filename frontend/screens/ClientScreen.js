@@ -10,7 +10,7 @@ import { Foundation, Ionicons  } from '@expo/vector-icons';
 
 import { clientsApi } from '../utils/api';
 
-const ClientScreen = ({route, navigation}) => {
+const ClientScreen = ({props, route, navigation}) => {
     const [appointments, setAppointments] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -81,7 +81,7 @@ const ClientScreen = ({route, navigation}) => {
                 }
             </Container>
         </ClientAppointments>
-            <PlusButton />
+            <PlusButton onPress={navigation.navigate.bind(this, 'AddAppointment')}/>
         </View>
     );
 }

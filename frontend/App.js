@@ -2,6 +2,8 @@ import React from 'react';
 
 import ClientScreen from './screens/ClientScreen';
 import HomeScreen from './screens/HomeScreen';
+import AddAppointmentScreen from './screens/AddAppointmentScreen';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AddClientScreen from "./screens/AddClientScreen";
@@ -28,6 +30,11 @@ export default function App() {
                   title: 'Додати Клієнта',
                   headerTintColor: '#2A86FF',
               }}/>
+                <Stack.Screen name="AddAppointment" component={AddAppointmentScreen} options={{
+                  title: 'Додати Запис',
+                  headerTintColor: '#2A86FF',
+              }}/>
+              
           </Stack.Navigator>
       </NavigationContainer>
   );
