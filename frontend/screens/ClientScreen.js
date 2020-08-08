@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import GrayText from '../components/GrayText';
 import Button from "../components/Button";
 import Badge from "../components/Badge";
+import { PlusButton } from "../components";
 import Container from "../components/Container";
 import { Foundation, Ionicons  } from '@expo/vector-icons';
 
@@ -80,6 +81,7 @@ const ClientScreen = ({route, navigation}) => {
                 }
             </Container>
         </ClientAppointments>
+            <PlusButton />
         </View>
     );
 }
@@ -98,7 +100,6 @@ const MoreButton = styled.TouchableOpacity`
 const AppointmentCardLabelText = styled.Text`
     font-size: 16px;
     margin-left: 10px;
-    
 `;
 
 const AppointmentCardRow = styled.View`
