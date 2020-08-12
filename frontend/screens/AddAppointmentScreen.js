@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, SectionList } from 'react-native';
 import styled from 'styled-components';
 import { Item, Input, Label, Picker } from 'native-base';
-// import DatePicker from 'react-native-datepicker';
-import DatePicker  from '@react-native-community/datetimepicker';
+//import DatePicker from 'react-native-datepicker';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+//import DatePicker  from '@react-native-community/datetimepicker';
+// import RNDateTimePicker  from '@react-native-community/datetimepicker';
 import { Ionicons } from '@expo/vector-icons';
 
 import  Button  from '../components/Button';
@@ -15,28 +17,70 @@ import {clientsApi} from '../utils/api';
 
 const AddAppointmentScreen = ({route, navigation}) => {
     const [values, setValues] = useState({});
+    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+    const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
+
+    // const [date, setDate] = useState(new Date(1598051730000));
+    // const [mode, setMode] = useState('date');
+    // const [show, setShow] = useState(false);
 
     const item = route.params;
 
     const handleChange = (name, e) => {
         const text = e.nativeEvent.text;
+          setFieldValue(name, text);
+    };
+
+    const setFieldValue = (name, value) => {
         setValues({
-            ...values,
-            [name]: text,
+        ...values,
+        [name]: value
         });
+        setDatePickerVisibility(false);
+        setTimePickerVisibility(false);
     };
 
     const onSubmit = () => {
-        clientsApi
-            .add(values)
-            .then(() => {
-                navigation.navigate('Home');
-            })
-            .catch(e => {
-                alert('BAD');
-                console.log(e);
-            });
+        alert(JSON.stringify(values));
+        // clientsApi
+        //     .add(values)
+        //     .then(() => {
+        //         navigation.navigate('Home');
+        //     })
+        //     .catch(e => {
+        //         alert('BAD');
+        //         console.log(e);
+        //     });
     };
+
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+
+//   const handleDateConfirm = (date) => {
+//     console.log("A date has been picked: ", date);
+//     hideDatePicker();
+//   };
+
+
+  const showTimePicker = () => {
+    setTimePickerVisibility(true);
+  };
+
+  const hideTimePicker = () => {
+    setTimePickerVisibility(false);
+  };
+
+//   const handleTimeConfirm = (time) => {
+//     console.log("A time has been picked: ", time);
+//     hideTimePicker();
+//   };
+
 
     return (
         <Container>
@@ -47,8 +91,8 @@ const AddAppointmentScreen = ({route, navigation}) => {
                     placeholderStyle={{ color: '#bfc6ea' }}
                     placeholderIconColor="#007aff"
                     style={{ width: '100%' }}
-                    // onValueChange={setFieldValue.bind(this, 'service')}
-                    // selectedValue={values.diagnosis}
+                    onValueChange={setFieldValue.bind(this, 'service')}
+                    selectedValue={values.service}
                 >
                     <Picker.Item label="гель-лак" value="гель-лак" />
                     <Picker.Item label="педикюр" value="педикюр" />
@@ -76,46 +120,24 @@ const AddAppointmentScreen = ({route, navigation}) => {
             <Item style={{ marginTop: 20, marginLeft: 0 }}>
             <TimeRow>
                 <View style={{ flex: 1 }}>
-                    <DatePicker
-                    date={new Date()}
-                    mode="date"
-                    placeholder="Дата"
-                    format="YYYY-MM-DD"
-                    minDate={new Date()}
-                    confirmBtnText="Сохранить"
-                    cancelBtnText="Отмена"
-                    showIcon={false}
-                    customStyles={{
-                        dateInput: {
-                        borderWidth: 0
-                        },
-                        dateText: {
-                        fontSize: 18
-                        }
-                    }}
-                    date={values.date}
-                    // onDateChange={setFieldValue.bind(this, 'date')}
+                   <Button onPress={showDatePicker}>Дата</Button>
+                   <Button onPress={showTimePicker}>Час</Button>
+                    <DateTimePickerModal
+                        isVisible={isDatePickerVisible}
+                        mode="date"
+                        //date={new Date()}
+                        onConfirm={setFieldValue.bind(this, 'date')}
+                        onCancel={hideDatePicker}
+                        // date={values.dete}
                     />
-                </View>
-                <View style={{ flex: 1 }}>
-                    <DatePicker
-                    mode="time"
-                    placeholder="Время"
-                    format="HH:mm"
-                    minDate={new Date()}
-                    confirmBtnText="Сохранить"
-                    cancelBtnText="Отмена"
-                    showIcon={false}
-                    customStyles={{
-                        dateInput: {
-                        borderWidth: 0
-                        },
-                        dateText: {
-                        fontSize: 18
-                        }
-                    }}
-                    date={values.time}
-                    // onDateChange={setFieldValue.bind(this, 'time')}
+                     <DateTimePickerModal
+                        isVisible={isTimePickerVisible}
+                        mode="time"
+                        onConfirm={setFieldValue.bind(this, 'time')}
+                        onCancel={hideTimePicker}
+                        locale="en_GB"
+                        // date={new Date()}
+                        // date={values.time}
                     />
                 </View>
             </TimeRow>
