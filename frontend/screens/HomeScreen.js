@@ -1,133 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, SectionList } from 'react-native';
-import  {SectionTitle } from '../components';
+import { StyleSheet, Text, View, Image, TouchableOpacity, SectionList, Alert } from 'react-native';
+import  { SectionTitle } from '../components';
+import  { PlusButton } from '../components';
+
 import Appointment from '../components/Appointment';
 import styled from 'styled-components/native';
 import { Ionicons } from '@expo/vector-icons';
 import Swipeable from 'react-native-swipeable-row';
 import { appointmentsApi } from '../utils/api';
-
-const DATA = [
-    {
-        title: "24 липня",
-        data: [
-            {
-                time: '15:30',
-                diagnosis: 'нарощення',
-                active: true,
-                user: {
-                    fullName: 'Анжела Tтиева',
-                    avatar: 'https://reactnative.dev/img/tiny_logo.png',
-                    phone: '+3 (8096) 927-17-18',
-                }
-            },
-            {
-                time: '15:30',
-                diagnosis: 'відновлення',
-                user: {
-                    fullName: 'Анжела Латінева',
-                    avatar: 'https://reactnative.dev/img/tiny_logo.png',
-                    phone: '+3 (8096) 456-18-18',
-                }
-            },
-            {
-                time: '15:30',
-                diagnosis: 'відновлення',
-                user: {
-                    fullName: 'Анжела Матиева',
-                    avatar: 'https://reactnative.dev/img/tiny_logo.png',
-                    phone: '+3 (8096) 455-20-20',
-                }
-            },
-            {
-                time: '15:30',
-                diagnosis: 'відновлення',
-                user: {
-                    fullName: 'Анжела Матиева',
-                    avatar: 'https://reactnative.dev/img/tiny_logo.png',
-                    phone: '+3 (8096) 000-00-99',
-                }
-            },
-            {
-                time: '15:30',
-                diagnosis: 'відновлення',
-                user: {
-                    fullName: 'Анжела Матиева',
-                    avatar: 'https://reactnative.dev/img/tiny_logo.png',
-                    phone: '+3 (8096) 927-17-18',
-                }
-            },
-            {
-                time: '15:30',
-                diagnosis: 'відновлення',
-                user: {
-                    fullName: 'Анжела Матиева',
-                    avatar: 'https://reactnative.dev/img/tiny_logo.png',
-                    phone: '+3 (8096) 927-17-18',
-                }
-            },
-        ]
-    },
-    {
-        title: "25 липня",
-        data: [
-            {
-                time: '15:30',
-                diagnosis: 'нарощення',
-                user: {
-                    fullName: 'Анжела Матиева',
-                    avatar: 'https://reactnative.dev/img/tiny_logo.png',
-                    phone: '+3 (8096) 927-17-18',
-                }
-            },
-            {
-                time: '15:30',
-                diagnosis: 'відновлення',
-                user: {
-                    fullName: 'Анжела Матиева',
-                    avatar: 'https://reactnative.dev/img/tiny_logo.png',
-                    phone: '+3 (8096) 927-17-18',
-                }
-            },
-            {
-                time: '15:30',
-                diagnosis: 'відновлення',
-                user: {
-                    fullName: 'Анжела Матиева',
-                    avatar: 'https://reactnative.dev/img/tiny_logo.png',
-                    phone: '+3 (8096) 927-17-18',
-                }
-            },
-            {
-                time: '15:30',
-                diagnosis: 'відновлення',
-                user: {
-                    fullName: 'Анжела Матиева',
-                    avatar: 'https://reactnative.dev/img/tiny_logo.png',
-                    phone: '+3 (8096) 927-17-18',
-                }
-            },
-            {
-                time: '15:30',
-                diagnosis: 'відновлення',
-                user: {
-                    fullName: 'Анжела Матиева',
-                    avatar: 'https://reactnative.dev/img/tiny_logo.png',
-                    phone: '+3 (8096) 927-17-18',
-                }
-            },
-            {
-                time: '15:30',
-                diagnosis: 'відновлення',
-                user: {
-                    fullName: 'Анжела Матиева',
-                    avatar: 'https://reactnative.dev/img/tiny_logo.png',
-                    phone: '+3 (8096) 927-17-18',
-                }
-            },
-        ]
-    },
-];
 
 
 const HomeScreen = (props) => {
@@ -148,17 +28,54 @@ const HomeScreen = (props) => {
 
     useEffect(fetchAppointments, []);
 
+    const removeAppointment = id => {
+        Alert.alert(
+        'Видалити запис',
+        'Ви впевнені у видалені заису?',
+        [
+            {
+            text: 'Відміна',
+            onPress: () => console.log('Cancel Pressed'),
+            style: 'cancel'
+            },
+            {
+            text: 'Видалити',
+            onPress: () => {
+                setIsLoading(true);
+                appointmentsApi
+                .remove(id)
+                .then(() => {
+                    fetchAppointments();
+                })
+                .catch(() => {
+                    setIsLoading(false);
+                });
+            }
+            }
+        ],
+        { cancelable: false }
+        );
+  };
+
     return (
         <Container>
             <SectionList
                 sections={data}
-                keyExtractor={(item, index) => item + index}
+                keyExtractor={(item, index) => item._id}
                 onRefresh={fetchAppointments}
                 refreshing={isLoading}
                 renderItem={({ item }) => (
-                    <Swipeable rightButtons={
-                        [ <Text>Left</Text>,
-                            <Text>Right</Text>]
+                    <Swipeable
+                    key={item._id}
+                    rightButtons={
+                        [<SwipeViewButton style={{ backgroundColor: '#B4C1CB' }}>
+                            <Ionicons name="md-create" size={28} color="white" />
+                        </SwipeViewButton>,
+                        <SwipeViewButton
+                            onPress={removeAppointment.bind(this, item._id)}
+                            style={{ backgroundColor: '#F85A5A' }}>
+                            <Ionicons name="ios-close" size={48} color="white" />
+                        </SwipeViewButton>]
                     }>
                         <Appointment navigate={props.navigation.navigate} item={item} />
                     </Swipeable>
@@ -167,38 +84,21 @@ const HomeScreen = (props) => {
                     <SectionTitle>{title}</SectionTitle>
                 )}
             />
-            <PlusButton
-                onPress={props.navigation.navigate.bind(this, 'AddClient')}
-                style={{
-                shadowColor: "#2a86ff",
-                shadowOffset: {
-                    width: 0,
-                    height: 2,
-                },
-                shadowOpacity: 0.5,
-                shadowRadius: 2.5,
-
-                elevation: 5,
-            }}>
-                <Ionicons name="ios-add" size={36} color="white" />
-            </PlusButton>
+             <PlusButton onPress={props.navigation.navigate.bind(this, 'AddClient')} />
         </Container>
     );
 }
 
 export default HomeScreen;
 
-const  PlusButton = styled.TouchableOpacity`
-    align-items: center;
-    justify-content: center;
-    border-radius: 50px;
-    width: 64px;
-    height: 64px;
-    background: #2A86FF;
-    position: absolute;
-    right: 25px;
-    bottom: 25px;
+const SwipeViewButton = styled.TouchableOpacity`
+  width: 75px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
+
 
 const Container = styled.View`
   flex: 1;

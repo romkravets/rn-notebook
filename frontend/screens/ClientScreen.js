@@ -1,29 +1,52 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, SectionList } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import { StyleSheet, Text, View, ActivityIndicator, Linking, Image, TouchableOpacity, SectionList } from 'react-native';
 import styled from 'styled-components/native';
 import GrayText from '../components/GrayText';
 import Button from "../components/Button";
 import Badge from "../components/Badge";
+import { PlusButton } from "../components";
 import Container from "../components/Container";
 import { Foundation, Ionicons  } from '@expo/vector-icons';
 
-const ClientScreen = ({route, navigation}) => {
+import { clientsApi } from '../utils/api';
+
+const ClientScreen = ({props, route, navigation}) => {
+    const [appointments, setAppointments] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     const item = route.params;
+
+    useEffect(() => {
+        const id = item.client._id;
+        clientsApi
+            .show(id)
+            .then(({ data }) => {
+                setAppointments(data.data.appointments);
+                setIsLoading(false);
+            })
+            .catch(() => {
+                setIsLoading(false);
+            });
+    }, []);
 
     return (
         <View style={{flex: 1}}>
 
         <ClientDetails>
-            <ClientFullName>{console.log(item.client) || item.client.fullname}</ClientFullName>
+            <ClientFullName>{item.client.fullname}</ClientFullName>
             <GrayText>{item.client.phone}</GrayText>
+            <GrayText>День народження: {item.client.birthday}</GrayText>
 
             <BlockButtons>
                 <MoreButtonView>
                     <Button>Детально</Button>
                 </MoreButtonView>
                 <PhoneButtonView>
-                    <Button background="#84D269">
+                    <Button  onPress={() =>
+                        Linking.openURL(
+                            'tel:' + item.client.phone
+                        )
+                    } background="#84D269">
                         <Foundation name="telephone" size={24} color="white" />
                     </Button>
                 </PhoneButtonView>
@@ -33,25 +56,32 @@ const ClientScreen = ({route, navigation}) => {
 
         <ClientAppointments>
             <Container>
-                <AppointmentCard>
-                    <MoreButton>
-                        <Ionicons name="md-more" size={20} color="#A3A3A3" />
-                    </MoreButton>
-                    <AppointmentCardRow>
-                        <Ionicons name="ios-hand" size={20} color="#A3A3A3" />
-                        <AppointmentCardLabelText>Послуга: <Text style={{fontWeight: '600'}}>Нарощення</Text></AppointmentCardLabelText>
-                    </AppointmentCardRow>
-                    <AppointmentCardRow>
-                        <Ionicons name="md-clipboard" size={20} color="#A3A3A3" />
-                        <AppointmentCardLabelText>Примітка: <Text style={{fontWeight: '600'}}>Новий</Text></AppointmentCardLabelText>
-                    </AppointmentCardRow>
-                    <AppointmentCardRow style={{justifyContent: 'space-between', marginTop: 15}}>
-                        <Badge style={{width: 155}} active>11.10.2019 - 15:40</Badge>
-                        <Badge color="green">1500 Р</Badge>
-                    </AppointmentCardRow>
-                </AppointmentCard>
+                {isLoading ? (<ActivityIndicator size="large" color="#2A86FF" />)
+                    :
+                    (appointments.map(appointment => (
+                        <AppointmentCard key={appointment._id}>
+                            <MoreButton>
+                                <Ionicons name="md-more" size={20} color="#A3A3A3" />
+                            </MoreButton>
+                            <AppointmentCardRow>
+                                <Ionicons name="ios-hand" size={20} color="#A3A3A3" />
+                                <AppointmentCardLabelText>Послуга: <Text style={{fontWeight: '600'}}>{appointment.service}</Text></AppointmentCardLabelText>
+                            </AppointmentCardRow>
+                            <AppointmentCardRow>
+                                <Ionicons name="md-clipboard" size={20} color="#A3A3A3" />
+                                <AppointmentCardLabelText>Примітка: <Text style={{fontWeight: '600'}}>{appointment.description}</Text></AppointmentCardLabelText>
+                            </AppointmentCardRow>
+                            <AppointmentCardRow style={{justifyContent: 'space-between', marginTop: 15}}>
+                                <Badge style={{width: 155}} active>{appointment.date} - {appointment.time}</Badge>
+                                <Badge color="green">{appointment.price} грн</Badge>
+                            </AppointmentCardRow>
+                        </AppointmentCard>
+                    ))
+                    )
+                }
             </Container>
         </ClientAppointments>
+            <PlusButton onPress={navigation.navigate.bind(this, 'AddAppointment')}/>
         </View>
     );
 }
@@ -70,7 +100,6 @@ const MoreButton = styled.TouchableOpacity`
 const AppointmentCardLabelText = styled.Text`
     font-size: 16px;
     margin-left: 10px;
-    
 `;
 
 const AppointmentCardRow = styled.View`
@@ -88,6 +117,7 @@ const AppointmentCard = styled.View`
     padding: 20px 25px;
     border-radius: 10px;
     background: white;
+    margin-bottom: 20px;
 `;
 
 const ClientDetails = styled(Container)`
