@@ -11,20 +11,28 @@ import { Ionicons } from '@expo/vector-icons';
 import  Button  from '../components/Button';
 import  Container  from '../components/Container';
 
-import {clientsApi} from '../utils/api';
+import {appointmentsApi} from '../utils/api';
 
 
 
 const AddAppointmentScreen = ({route, navigation}) => {
-    const [values, setValues] = useState({});
+    const item = route.params;
+
+    const [values, setValues] = useState({
+        services: 'манікюр',
+        description: '',
+        price: '',
+        date: null,
+        time: null,
+        client: item.clientId
+    });
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
     const [isTimePickerVisible, setTimePickerVisibility] = useState(false);
+    const [isDateDisplay, setDateDisplay] = useState('');
 
     // const [date, setDate] = useState(new Date(1598051730000));
     // const [mode, setMode] = useState('date');
     // const [show, setShow] = useState(false);
-
-    const item = route.params;
 
     const handleChange = (name, e) => {
         const text = e.nativeEvent.text;
@@ -42,15 +50,15 @@ const AddAppointmentScreen = ({route, navigation}) => {
 
     const onSubmit = () => {
         alert(JSON.stringify(values));
-        // clientsApi
-        //     .add(values)
-        //     .then(() => {
-        //         navigation.navigate('Home');
-        //     })
-        //     .catch(e => {
-        //         alert('BAD');
-        //         console.log(e);
-        //     });
+        appointmentsApi
+            .add(values)
+            .then(() => {
+                navigation.navigate('Home');
+            })
+            .catch(e => {
+                alert('BAD');
+                console.log(e.response);
+            });
     };
 
 
@@ -62,10 +70,11 @@ const AddAppointmentScreen = ({route, navigation}) => {
     setDatePickerVisibility(false);
   };
 
-//   const handleDateConfirm = (date) => {
-//     console.log("A date has been picked: ", date);
-//     hideDatePicker();
-//   };
+  const handleDateConfirm = (date) => {
+    console.log("A date has been picked: ", date);
+    setDateDisplay(date);
+    // hideDatePicker();
+  };
 
 
   const showTimePicker = () => {
@@ -94,6 +103,7 @@ const AddAppointmentScreen = ({route, navigation}) => {
                     onValueChange={setFieldValue.bind(this, 'service')}
                     selectedValue={values.service}
                 >
+                    <Picker.Item label="педикюр" value="манікюр" />
                     <Picker.Item label="гель-лак" value="гель-лак" />
                     <Picker.Item label="педикюр" value="педикюр" />
                     <Picker.Item label="макіяж" value="макіяж" />
@@ -104,8 +114,6 @@ const AddAppointmentScreen = ({route, navigation}) => {
                 <Input
                     onChange={handleChange.bind(this, 'description')}
                     value={values.phone}
-                    // keyboardType="numeric"
-                    // dataDetectorTypes="phoneNumber"
                 />
             </Item>
             <Item style={{ marginTop: 20, marginLeft: 0 }} floatingLabel>
@@ -114,7 +122,6 @@ const AddAppointmentScreen = ({route, navigation}) => {
                     onChange={handleChange.bind(this, 'price')}
                     value={values.birthday}
                     keyboardType="numeric"
-                    // dataDetectorTypes="calendarEvent"
                 />
             </Item>
             <Item style={{ marginTop: 20, marginLeft: 0 }}>
@@ -125,19 +132,19 @@ const AddAppointmentScreen = ({route, navigation}) => {
                     <DateTimePickerModal
                         isVisible={isDatePickerVisible}
                         mode="date"
-                        //date={new Date()}
+                         format="YYYY-MM-DD"
                         onConfirm={setFieldValue.bind(this, 'date')}
                         onCancel={hideDatePicker}
-                        // date={values.dete}
+                        value={values.date}
                     />
                      <DateTimePickerModal
                         isVisible={isTimePickerVisible}
+                        format="HH:mm"
                         mode="time"
                         onConfirm={setFieldValue.bind(this, 'time')}
                         onCancel={hideTimePicker}
                         locale="en_GB"
-                        // date={new Date()}
-                        // date={values.time}
+                        value={values.time}
                     />
                 </View>
             </TimeRow>

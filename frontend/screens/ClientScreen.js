@@ -81,7 +81,7 @@ const ClientScreen = ({props, route, navigation}) => {
                 }
             </Container>
         </ClientAppointments>
-            <PlusButton onPress={navigation.navigate.bind(this, 'AddAppointment')}/>
+            <PlusButton onPress={navigation.navigate.bind(this, 'AddAppointment', {clientId: item.client._id})}/>
         </View>
     );
 }
@@ -125,7 +125,7 @@ const ClientDetails = styled(Container)`
     background: #F8FAFD;
 `;
 
-const ClientAppointments = styled.View`
+const ClientAppointments = styled.ScrollView`
     flex: 1;
     background: #E5E5E5;
 `;
